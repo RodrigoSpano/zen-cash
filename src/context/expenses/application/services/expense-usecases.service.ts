@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { type CreateExpenseUseCaseDto } from './create-expense-use-case.dto';
+import { type CreateExpenseUseCaseDto } from '../dto/create-expense-use-case.dto';
 
-import { ExpenseRepository } from '../domain/expense.repository';
+import { ExpenseRepository } from '../../domain/expense.repository';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class CreateExpenseUseCase {
+export class expenseUseCasesService {
   constructor(private readonly expenseRepository: ExpenseRepository) {}
 
   async exec(createExpenseDto: CreateExpenseUseCaseDto): Promise<void> {
