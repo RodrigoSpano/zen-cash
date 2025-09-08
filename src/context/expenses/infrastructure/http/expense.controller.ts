@@ -1,15 +1,14 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { CreateExpenseDto } from './dto/request/create-expense.dto';
-import { ExpenseRepository } from '../../domain/expense.repository';
+import { ExpenseService } from '../../application/services/expense-usecases.service';
 
 @Controller('expense')
 export class ExpenseController {
-  constructor(@Inject() private expenseRepository: ExpenseRepository) {}
+  constructor(@Inject() private expenseService: ExpenseService) {}
 
   @Post()
   async postExpense(@Body() createExpenseDto: CreateExpenseDto) {
     console.log(createExpenseDto);
-    await this.expenseRepository.create(createExpenseDto);
-    // if (!createExpense) throw new BadRequestException();
+    await this.expenseService.create(createExpenseDto);
   }
 }

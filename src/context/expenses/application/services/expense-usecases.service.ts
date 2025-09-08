@@ -6,10 +6,10 @@ import { ExpenseRepository } from '../../domain/expense.repository';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class expenseUseCasesService {
+export class ExpenseService {
   constructor(private readonly expenseRepository: ExpenseRepository) {}
 
-  async exec(createExpenseDto: CreateExpenseUseCaseDto): Promise<void> {
+  async create(createExpenseDto: CreateExpenseUseCaseDto): Promise<void> {
     await this.expenseRepository.create(createExpenseDto);
   }
 }
