@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ExpenseModule } from './context/expenses/expense.module';
 import { MyConfigModule } from './config/config.module';
+import { PostgresqlModule } from './postgresql/postgresql.module';
 
 @Module({
-  imports: [ExpenseModule, MyConfigModule],
+  imports: [ExpenseModule, MyConfigModule, PostgresqlModule],
   controllers: [],
   providers: [],
 })
