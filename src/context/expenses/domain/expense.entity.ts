@@ -1,5 +1,5 @@
 import * as UUID from 'uuid';
-import type { IExpenseShort, IPrimitiveExpense } from '../types/expense';
+import type { IExpenseShort, IPrimitiveExpense } from './types/expense.d.ts';
 
 export class Expense {
   constructor(private attributes: IPrimitiveExpense) {}

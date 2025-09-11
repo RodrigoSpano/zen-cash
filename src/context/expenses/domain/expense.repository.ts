@@ -1,7 +1,14 @@
-import type { IPrimitiveExpense, IExpenseShort } from '../types/expense';
+import type {
+  IPrimitiveExpense,
+  IExpenseShort,
+  FindExpensesOptions,
+  FindOneExpenseOptions,
+} from './types/expense.d.ts';
 
 export abstract class ExpenseRepository {
   abstract create(expense: IExpenseShort): Promise<void>;
-  abstract findById(id: string): Promise<IPrimitiveExpense | void>;
-  abstract findAll(): Promise<IPrimitiveExpense[]>;
+  abstract findOne(
+    options: FindOneExpenseOptions,
+  ): Promise<IPrimitiveExpense | null>;
+  abstract find(options?: FindExpensesOptions): Promise<IPrimitiveExpense[]>;
 }
