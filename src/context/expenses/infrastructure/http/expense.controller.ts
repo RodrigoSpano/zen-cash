@@ -14,11 +14,11 @@ export class ExpenseController {
 
   @Get(':id')
   async getExpenseById(@Param('id') id: string) {
-    return await this.expenseService.findById(id);
+    return await this.expenseService.findOne({ where: { id } });
   }
 
   @Get()
   async getAllExpenses() {
-    return await this.expenseService.findAll();
+    return await this.expenseService.find({});
   }
 }

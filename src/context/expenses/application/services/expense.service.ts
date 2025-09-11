@@ -4,7 +4,11 @@ import { type CreateExpenseUseCaseDto } from '../dto/create-expense-use-case.dto
 
 import { ExpenseRepository } from '../../domain/expense.repository';
 import { Injectable } from '@nestjs/common';
-import { IPrimitiveExpense } from '../../types/expense';
+import type {
+  FindExpensesOptions,
+  FindOneExpenseOptions,
+  IPrimitiveExpense,
+} from '../../domain/types/expense.d.ts';
 
 @Injectable()
 export class ExpenseService {
@@ -14,11 +18,13 @@ export class ExpenseService {
     await this.expenseRepository.create(createExpenseDto);
   }
 
-  async findById(id: string): Promise<IPrimitiveExpense | void> {
-    return await this.expenseRepository.findById(id);
+  async findOne(
+    options: FindOneExpenseOptions,
+  ): Promise<IPrimitiveExpense | null> {
+    return await this.expenseRepository.findOne(options);
   }
 
-  async findAll(): Promise<IPrimitiveExpense[]> {
-    return await this.expenseRepository.findAll();
+  async find(options?: FindExpensesOptions): Promise<IPrimitiveExpense[]> {
+    return await this.expenseRepository.find(options);
   }
 }
